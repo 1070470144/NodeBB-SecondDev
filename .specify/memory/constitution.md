@@ -24,7 +24,7 @@
 
 **项目名称（Project Name）：** NodeBB-SecondDev  
 **宪章版本（Constitution Version）：** v1.0.0  
-**RATIFICATION_DATE：** TODO(RATIFICATION_DATE)：请填写本宪章正式生效日期  
+**RATIFICATION_DATE：** TODO(RATIFICATION_DATE)：2026-03-04  
 **LAST_AMENDED_DATE：** 2026-03-04
 
 
