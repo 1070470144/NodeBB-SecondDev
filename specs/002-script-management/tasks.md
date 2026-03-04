@@ -47,13 +47,13 @@
 
 **Independent Test**: 按 Quickstart 的“1) 用户上传剧本”走通（`/scripts/upload`），并确认出现在“我的剧本”里。
 
-- [ ] T022 [P] [US1] 在 `src/controllers/scripts.js` 实现上传页控制器 `GET /scripts/upload`
-- [ ] T023 [P] [US1] 在 `src/views/scripts-upload.tpl` 实现上传页模板
-- [ ] T024 [US1] 在 `src/api/scripts.js` 实现创建剧本端点 `POST /api/scripts`（接受文件或 `content`，`title`/`description` 必填，校验 JSON 可解析）
-- [ ] T025 [US1] 在 `src/scripts/index.js` 实现 JSON 解析 + 大小限制 + 规范化存储（由 API create 调用）
-- [ ] T026 [US1] 在 `src/scripts/index.js` 持久化剧本对象与 owner 索引（`script:{sid}`、`uid:{uid}:scripts`）
-- [ ] T027 [US1] 在 `src/api/scripts.js` 增加无效 JSON / 缺少元信息的基础错误响应
-- [ ] T028 [US1] 在 `public/src/client/scripts.js` 增加上传表单的前端行为（可选：预览/校验）
+- [x] T022 [P] [US1] 在 `src/controllers/scripts.js` 实现上传页控制器 `GET /scripts/upload`
+- [x] T023 [P] [US1] 在 `src/views/scripts-upload.tpl` 实现上传页模板
+- [x] T024 [US1] 在 `src/api/scripts.js` 实现创建剧本端点 `POST /api/scripts`（接受文件或 `content`，`title`/`description` 必填，校验 JSON 可解析）
+- [x] T025 [US1] 在 `src/scripts/index.js` 实现 JSON 解析 + 大小限制 + 规范化存储（由 API create 调用）
+- [x] T026 [US1] 在 `src/scripts/index.js` 持久化剧本对象与 owner 索引（`script:{sid}`、`uid:{uid}:scripts`）
+- [x] T027 [US1] 在 `src/api/scripts.js` 增加无效 JSON / 缺少元信息的基础错误响应
+- [x] T028 [US1] 在 `public/src/client/scripts.js` 增加上传表单的前端行为（可选：预览/校验）
 
 **Checkpoint**: 上传链路端到端可用；剧本数据包含正确的 owner 与元信息。
 
@@ -65,13 +65,13 @@
 
 **Independent Test**: 上传 2 个剧本后打开 `/scripts/manage`，更新其中一个、删除其中一个，并确认页面状态正确更新。
 
-- [ ] T029 [P] [US2] 在 `src/controllers/scripts.js` 实现“我的剧本”页控制器 `GET /scripts/manage`
-- [ ] T030 [P] [US2] 在 `src/views/scripts-manage.tpl` 实现“我的剧本”页模板
-- [ ] T031 [US2] 在 `src/api/scripts.js` 增加“我的剧本列表”数据端点（可选 `GET /api/scripts/manage`，或复用 `GET /api/scripts` + owner filter），并同步更新 `specs/002-script-management/contracts/http-api.md`
-- [ ] T032 [US2] 在 `src/api/scripts.js` 实现更新端点 `PUT /api/scripts/:sid`（仅 owner；允许更新元信息与替换 content）
-- [ ] T033 [US2] 在 `src/api/scripts.js` 实现删除端点 `DELETE /api/scripts/:sid`（仅 owner；将 `status=deleted` 并更新索引）
-- [ ] T034 [US2] 在 `src/scripts/index.js` 确保已删除的剧本不出现在公开列表中
-- [ ] T035 [US2] 在 `public/src/client/scripts.js` 接入 manage 页的前端动作（update/delete）
+- [x] T029 [P] [US2] 在 `src/controllers/scripts.js` 实现“我的剧本”页控制器 `GET /scripts/manage`
+- [x] T030 [P] [US2] 在 `src/views/scripts-manage.tpl` 实现“我的剧本”页模板
+- [x] T031 [US2] 在 `src/api/scripts.js` 增加“我的剧本列表”数据端点（可选 `GET /api/scripts/manage`，或复用 `GET /api/scripts` + owner filter），并同步更新 `specs/002-script-management/contracts/http-api.md`
+- [x] T032 [US2] 在 `src/api/scripts.js` 实现更新端点 `PUT /api/scripts/:sid`（仅 owner；允许更新元信息与替换 content）
+- [x] T033 [US2] 在 `src/api/scripts.js` 实现删除端点 `DELETE /api/scripts/:sid`（仅 owner；将 `status=deleted` 并更新索引）
+- [x] T034 [US2] 在 `src/scripts/index.js` 确保已删除的剧本不出现在公开列表中
+- [x] T035 [US2] 在 `public/src/client/scripts.js` 接入 manage 页的前端动作（update/delete）
 
 ---
 
