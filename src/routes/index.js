@@ -24,6 +24,7 @@ const _mounts = {
 	feed: require('./feeds'),
 	'well-known': require('./well-known'),
 	activitypub: require('./activitypub'),
+	scripts: require('./scripts'),
 };
 
 _mounts.main = (app, middleware, controllers) => {

@@ -42,6 +42,7 @@ Controllers.errors = require('./errors');
 Controllers.composer = require('./composer');
 
 Controllers.write = require('./write');
+Controllers.scripts = require('./scripts');
 
 Controllers.reset = async function (req, res) {
 	if (meta.config['password:disableEdit']) {

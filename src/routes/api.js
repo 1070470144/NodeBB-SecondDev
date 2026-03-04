@@ -43,4 +43,23 @@ module.exports = function (app, middleware, controllers) {
 		middleware.canViewUsers,
 		middleware.checkAccountPermissions,
 	], helpers.tryRoute(controllers.accounts.edit.uploadPicture));
+
+	const scriptsAPI = require('../api/scripts');
+	router.get('/scripts', [...middlewares], helpers.tryRoute(scriptsAPI.list));
+	router.get('/scripts/favorites', [...middlewares, middleware.ensureLoggedIn], helpers.tryRoute(scriptsAPI.listFavorites));
+	router.get('/scripts/manage', [...middlewares, middleware.ensureLoggedIn], helpers.tryRoute(scriptsAPI.listManage));
+	router.get('/scripts/:sid', [...middlewares], helpers.tryRoute(scriptsAPI.get));
+	router.post('/scripts', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.create));
+	router.put('/scripts/:sid', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.update));
+	router.delete('/scripts/:sid', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.remove));
+	router.post('/scripts/:sid/like', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.like));
+	router.delete('/scripts/:sid/like', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.unlike));
+	router.post('/scripts/:sid/favorite', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.favorite));
+	router.delete('/scripts/:sid/favorite', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.unfavorite));
+	router.post('/scripts/:sid/download', [...middlewares], helpers.tryRoute(scriptsAPI.download));
+
+	router.get('/admin/scripts', [...middlewares, middleware.ensureLoggedIn], helpers.tryRoute(scriptsAPI.listAdmin));
+	router.post('/admin/scripts/:sid/moderate', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.moderate));
+	router.get('/admin/scripts/config', [...middlewares, middleware.ensureLoggedIn], helpers.tryRoute(scriptsAPI.getAdminConfig));
+	router.put('/admin/scripts/config', [...middlewares, middleware.ensureLoggedIn, middleware.applyCSRF], helpers.tryRoute(scriptsAPI.updateAdminConfig));
 };

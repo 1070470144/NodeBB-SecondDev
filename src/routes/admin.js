@@ -78,6 +78,9 @@ module.exports = function (app, name, middleware, controllers) {
 	helpers.setupAdminPageRoute(app, `/${name}/development/logger`, middlewares, controllers.admin.logger.get);
 	helpers.setupAdminPageRoute(app, `/${name}/development/info`, middlewares, controllers.admin.info.get);
 
+	helpers.setupAdminPageRoute(app, `/${name}/scripts`, middlewares, controllers.admin.scripts.list);
+	helpers.setupAdminPageRoute(app, `/${name}/scripts/config`, middlewares, controllers.admin.scripts.config);
+
 	apiRoutes(app, name, middleware, controllers);
 };
 
@@ -109,4 +112,10 @@ function apiRoutes(router, name, middleware, controllers) {
 	router.post(`/api/${name}/uploadOgImage`, middlewares, helpers.tryRoute(controllers.admin.uploads.uploadOgImage));
 	router.post(`/api/${name}/upload/file`, middlewares, helpers.tryRoute(controllers.admin.uploads.uploadFile));
 	router.post(`/api/${name}/uploadDefaultAvatar`, middlewares, helpers.tryRoute(controllers.admin.uploads.uploadDefaultAvatar));
+
+	const scriptsAPI = require('../api/scripts');
+	router.get(`/api/${name}/scripts`, middleware.ensureLoggedIn, helpers.tryRoute(scriptsAPI.listAdmin));
+	router.post(`/api/${name}/scripts/:sid/moderate`, middlewares, helpers.tryRoute(scriptsAPI.moderate));
+	router.get(`/api/${name}/scripts/config`, middleware.ensureLoggedIn, helpers.tryRoute(scriptsAPI.getAdminConfig));
+	router.put(`/api/${name}/scripts/config`, middlewares, helpers.tryRoute(scriptsAPI.updateAdminConfig));
 }
