@@ -4,11 +4,11 @@
 
 **Input**: Feature specification from `/specs/001-i18n/spec.md`
 
-**Note**: This template is filled in by the `/speckit.plan` command.
+**Note**: This template is filled in by the `/speckit.plan` command. Updated to include main UI language switch button.
 
 ## Summary
 
-实现 NodeBB 论坛的多语言切换功能，默认语言为中文，用户可以在中文和英文之间自由切换，语言偏好持久保存。
+实现 NodeBB 论坛的多语言切换功能，默认语言为中文，用户可以在中文和英文之间自由切换，语言偏好持久保存。**新增需求：在主界面导航栏添加语言切换按钮。**
 
 ## Technical Context
 

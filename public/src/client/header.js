@@ -17,6 +17,7 @@ define('forum/header', [
 		handleStatusChange();
 		createHeaderTooltips();
 		handleLogout();
+		handleLanguageSwitch();
 	};
 
 	function handleStatusChange() {
@@ -71,6 +72,27 @@ define('forum/header', [
 				logout();
 			});
 			return false;
+		});
+	}
+
+	function handleLanguageSwitch() {
+		$('body').on('click', '[component="header/language"]', function (e) {
+			e.preventDefault();
+			const currentLang = config.userLang || config.defaultLang;
+			const newLang = currentLang === 'zh-CN' ? 'en-GB' : 'zh-CN';
+
+			if (app.user.uid > 0) {
+				$.post(`${config.relative_path}/api/user/${app.user.userslug}/settings`, {
+					language: newLang
+				}, function () {
+					window.location.reload();
+				}).fail(function () {
+					alerts.error('Failed to change language');
+				});
+			} else {
+				localStorage.setItem('nodebb_language', newLang);
+				window.location.reload();
+			}
 		});
 	}
 
